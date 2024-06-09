@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -41,9 +42,11 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.toColorInt
+import androidx.navigation.NavController
 import com.dangchph33497.fpoly.dangchph33497_assigment1_kot104.R
 import com.dangchph33497.fpoly.dangchph33497_assigment1_kot104.model.Product
 import com.dangchph33497.fpoly.dangchph33497_assigment1_kot104.model.Type
+import com.dangchph33497.fpoly.dangchph33497_assigment1_kot104.navigation.Screens
 
 
 class Home : ComponentActivity() {
@@ -51,14 +54,13 @@ class Home : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            HomeScreen()
         }
     }
 }
 
-@Preview(showBackground = true)
+
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     val typeList = listOf(
         Type(1, R.drawable.baseline_star_24, "Popular"),
         Type(2, R.drawable.outline_chair_alt_24, "Chair"),
@@ -93,7 +95,7 @@ fun HomeScreen() {
             modifier = Modifier.padding(16.dp)
         ) {
             items(productList) { product ->
-                ProductItem(product = product)
+                ProductItem(product = product,navController)
             }
         }
     }
@@ -128,10 +130,10 @@ fun TypeItem(type: Type) {
 }
 
 @Composable
-fun ProductItem(product: Product) {
+fun ProductItem(product: Product,navController: NavController) {
     Column(
         modifier = Modifier
-            .clip(RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(12.dp)).clickable { navController.navigate("${Screens.Detail.route}") }
             .padding(8.dp)
     ) {
         Box {

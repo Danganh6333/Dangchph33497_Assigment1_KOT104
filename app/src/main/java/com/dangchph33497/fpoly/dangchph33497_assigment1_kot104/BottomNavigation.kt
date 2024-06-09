@@ -66,14 +66,14 @@ class BottomNavigation : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Dangchph33497_Assigment1_KOT104Theme{
-                NavigationLayout()
+
             }
         }
     }
 }
 
 @Composable
-fun NavigationLayout() {
+fun NavigationLayout(navHostController: NavHostController) {
     val navigationController = rememberNavController()
     val selected = remember { mutableStateOf("home") }
     val currentDestination by navigationController.currentBackStackEntryAsState()
@@ -104,7 +104,7 @@ fun NavigationLayout() {
                     }
                 },
                 actions = {
-                    IconButton(onClick = { /* Handle cart click */ }) {
+                    IconButton(onClick = { navHostController.navigate("${Screens.Cart.route}") }) {
                         if(selected.value == "profile"){
                             Icon(imageVector = Icons.Rounded.ExitToApp, contentDescription = "Cart", tint = Color.Black)
                         }else{
@@ -124,7 +124,7 @@ fun NavigationLayout() {
             startDestination = Screens.Home.route,
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable(Screens.Home.route) { HomeScreen() }
+            composable(Screens.Home.route) { HomeScreen(navController = navHostController) }
             composable(Screens.Bookmark.route) { BookmarkLayout() }
             composable(Screens.Notification.route) { Greeting4(name = "Notification Page") }
             composable(Screens.Profile.route) { Greeting5(name = "Profile Page") }

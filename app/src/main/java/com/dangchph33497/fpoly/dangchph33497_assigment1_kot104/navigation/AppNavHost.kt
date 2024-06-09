@@ -7,10 +7,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.NavHostController
 import com.dangchph33497.fpoly.dangchph33497_assigment1_kot104.NavigationLayout
+import com.dangchph33497.fpoly.dangchph33497_assigment1_kot104.ProductDetailScreen
 import com.dangchph33497.fpoly.dangchph33497_assigment1_kot104.SplashScreen
 import com.dangchph33497.fpoly.dangchph33497_assigment1_kot104.access.SignInScreen
 import com.dangchph33497.fpoly.dangchph33497_assigment1_kot104.access.SignUpScreen
 import com.dangchph33497.fpoly.dangchph33497_assigment1_kot104.screen.BookmarkLayout
+import com.dangchph33497.fpoly.dangchph33497_assigment1_kot104.screen.CartLayout
 import com.dangchph33497.fpoly.dangchph33497_assigment1_kot104.screen.CongratulationLayout
 import com.dangchph33497.fpoly.dangchph33497_assigment1_kot104.screen.GreetingPreview4
 import com.dangchph33497.fpoly.dangchph33497_assigment1_kot104.screen.GreetingPreview5
@@ -37,13 +39,13 @@ fun AppNavHost(
             SignUpScreen(navController)
         }
         composable(Screens.Bottom.route) {
-            NavigationLayout()
+            NavigationLayout(navController)
         }
         composable(Screens.Congratulation.route) {
-            NavigationLayout()
+            CongratulationLayout(navController)
         }
         composable(Screens.Home.route) {
-            HomeScreen()
+            HomeScreen(navController)
         }
         composable(Screens.Bookmark.route) {
             BookmarkLayout()
@@ -56,6 +58,15 @@ fun AppNavHost(
         }
         composable(Screens.Congratulation.route) {
             CongratulationLayout(navController)
+        }
+        composable(Screens.Detail.route) {
+            ProductDetailScreen(navController)
+        }
+        composable(Screens.Bookmark.route) {
+            BookmarkLayout()
+        }
+        composable(Screens.Cart.route) {
+            CartLayout(navController)
         }
     }
 }

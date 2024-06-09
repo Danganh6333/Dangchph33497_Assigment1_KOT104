@@ -7,6 +7,8 @@ enum class Screen {
     BOTTOM,
     CONGRATULATION,
     HOME,
+    DETAIL,
+    CART,
     BOOKMARK,
     NOTIFICATION,
     PROFILE
@@ -22,4 +24,6 @@ sealed class Screens(val route : String) {
     object Bookmark : Screens(Screen.BOOKMARK.name)
     object Notification : Screens(Screen.NOTIFICATION.name)
     object Profile : Screens(Screen.PROFILE.name)
+    object Cart : Screens(Screen.CART.name)
+    object Detail : Screens(Screen.DETAIL.name)
 }

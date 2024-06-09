@@ -86,10 +86,7 @@ fun BookmarkButtonWithColor(
 fun BookmarkLayout() {
     val bookmarkItems = listOf(
         Product(1, "Coffee Table", 50.0f, R.drawable.image3, 1),
-        Product(2, "Coffee Chair", 20.0f, R.drawable.image1, 2),
-        Product(3, "Minimal Stand", 25.0f, R.drawable.image4, 3),
         Product(4, "Minimal Desk", 50.0f, R.drawable.image5, 4),
-        Product(5, "Minimal Lamp", 12.0f, R.drawable.image2, 5)
     )
 
     Column(
@@ -174,19 +171,6 @@ fun BookmarkItem(
                     )
                 )
             }
-        }
-
-        // Shopping cart icon on bottom left
-        IconButton(
-            onClick = { /* Handle add to cart action */ },
-            modifier = Modifier
-                .size(24.dp)
-                .align(Alignment.BottomEnd)
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.baseline_shopping_bag_24),
-                contentDescription = "Add to Cart"
-            )
         }
     }
 }
